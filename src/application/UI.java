@@ -1,6 +1,13 @@
 package application;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+import boardgame.Piece;
+import boardgame.Board;
+import boardgame.Position;
 import chess.ChessPiece;
+import chess.ChessPosition;
 import chess.Color;
 
 public class UI {
@@ -26,6 +33,16 @@ public class UI {
 	public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
 	public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 
+	public static ChessPosition readChessPosition(Scanner sc) {
+		try {
+		String s= sc.next();
+		return new ChessPosition(s.charAt(0),Integer.parseInt(s.substring(1)));
+		
+	}catch(RuntimeException e) {
+		throw new InputMismatchException("Error input data");
+	}
+	}
+	
 	public static void printBoard(ChessPiece[][] pieces) {
 		for (int i = 0; i < pieces.length; i++) {
 			System.out.print(8 - i + " ");

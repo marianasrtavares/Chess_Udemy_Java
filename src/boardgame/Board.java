@@ -29,7 +29,7 @@ public int getColumn() {
 
 public Piece piece (int row, int column) {
 	if(!positionExists(row, column)) {
-		throw new BoardException("That position doesnt exists o the board");
+		throw new BoardException("That position doesnt exists on the board");
 	}
 	return pieces[row][column];
   
@@ -66,7 +66,23 @@ public boolean thereIsAPiece(Position position) {
 	}
 	return piece(position)!=null;
 }
+
+public Piece removePiece(Position position) {
+	
+	if(!positionExists(position)) {
+		throw new BoardException("That position doesnt exists o the board");
+	}
+	
+	if(piece(position)==null) {
+		return null;
+	}
+	Piece p= piece(position);
+		p.position=null;
+		pieces[position.getRow()][position.getColumn()]=null;
+	return p;
 }
+}
+
   
 
 
