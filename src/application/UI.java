@@ -61,15 +61,11 @@ public class UI {
 
 	}
 
-	private static void printPiece(ChessPiece piece) {
+	private static void printPiece(ChessPiece piece, boolean background) {
+	   	if(background) {
+	   		System.out.println(ANSI_BLUE_BACKGROUND);
+	   	}
 		if (piece == null) {
-			System.out.print("-");
-		}
-		else {
-			System.out.print(piece);
-		}
-		System.out.print(" ");
-    	if (piece == null) {
             System.out.print("-");
         }
         else {
@@ -81,6 +77,23 @@ public class UI {
             }
         }
         System.out.print(" ");
+	}
+
+
+	public static void printBoard(ChessPiece[][] pieces, boolean[][] possibleMoves) {
+		for (int i = 0; i < pieces.length; i++) {
+			System.out.print(8 - i + " ");
+			for (int j = 0; j < pieces[i].length; j++) {
+				printPiece(pieces[i][j]);
+				if(possibleMoves[i][j]) {
+			
+			}
+			System.out.println(" ");
+		}
+		System.out.println(" a b c d e f g h");
+
+	}
+		
 	}
 }
 

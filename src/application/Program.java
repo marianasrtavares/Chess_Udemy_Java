@@ -20,8 +20,12 @@ public class Program {
 		   System.out.println();
 		   System.out.println("source: ");
 		   ChessPosition source=UI.readChessPosition(sc);
+		   boolean [][] possible = chess1.possibleMoves(source);
+		   
 		   System.out.println("target: ");
 		   ChessPosition target= UI.readChessPosition(sc);
+		   
+		   
 		   ChessPiece p= chess1.performChessMove(source, target);
 		   }
 		   catch(ChessException e) {
@@ -38,5 +42,6 @@ public class Program {
 	  
 	   
 }
+	}
 }
 

@@ -16,6 +16,17 @@ public Integer getRow() {
 }
 
 
+
+public void setRow(int row) {
+	this.row = row;
+}
+
+
+public void setColumn(int column) {
+	this.column = column;
+}
+
+
 public Integer getColumn() {
 	return column;
 }
@@ -29,6 +40,8 @@ public void setValues (Integer row, Integer column) {
 public String toString() {
 	return this.row+", "+this.column;
 }
+
+
 
   
   
