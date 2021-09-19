@@ -112,7 +112,8 @@ public class ChessMatch {
 		currentPlayer= (currentPlayer == Color.WHITE) ? Color.BLACK : Color.BLACK;
 	}
 	private Piece makeMove(Position source, Position target) {
-		Piece p= board.removePiece(source);
+		ChessPiece p= (ChessPiece) board.removePiece(source);
+		p.increaseMoveCount();
 		Piece pieceRemoved= board.removePiece(target);
 	    board.placePiece(p,target);
 	    if(pieceRemoved!=null) {
@@ -124,12 +125,14 @@ public class ChessMatch {
 	}
 	private void undoMove(Position source, Position target, Piece capturedPiece) {
 		
-		Piece pieceTargetRemoved= board.removePiece(target);
-	    board.placePiece(pieceTargetRemoved,source);
+		ChessPiece pieceTargetRemoved= (ChessPiece)board.removePiece(target);
+		pieceTargetRemoved.decreaseMoveCount();
+		board.placePiece(pieceTargetRemoved,source);
 	    if(capturedPiece!=null) {
 	    board.placePiece(capturedPiece,target);
 	    piecesOnTheBoard.add(capturedPiece);
     	capturedPieces.remove(capturedPiece);
+    	
 	    }
 	}
 
